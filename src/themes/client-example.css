@@ -1,0 +1,16 @@
+/**
+ * Example second theme. Copy this file, rename the class, add variables,
+ * register the theme id in `src/lib/applyTheme.ts`, and set `VITE_SITE_THEME`.
+ */
+.theme-client-example {
+  --color-bg: #0b1020;
+  --color-surface: #121a33;
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-border: #243055;
+  --color-primary: #38bdf8;
+  --color-primary-hover: #0ea5e9;
+  --color-link: var(--color-primary);
+  --color-link-hover: var(--color-primary-hover);
+  --color-focus: #fbbf24;
+}

@@ -1,0 +1,27 @@
+---
+description: Standards for the site-revamp-template React app, themes, and Cursor skill outputs.
+alwaysApply: true
+---
+
+# Revamp template conventions
+
+## Architecture
+
+- **Stack**: Vite, React, TypeScript, `react-router-dom`. Keep `src/` feature-oriented (`pages/`, `components/`, `lib/`, `themes/`).
+- **Entry**: `applyThemeFromEnv()` in `src/main.tsx` must run before render so `document.documentElement` receives `theme-*` classes early.
+
+## Styling and UI
+
+- Use **CSS custom properties** from the active `.theme-*` class for colors, spacing, and typography. Define per-client overrides in `src/themes/<client>.css`.
+- Prefer **`src/components/ui`** primitives (`Button`, `Container`, `Section`) and extend that folder when a pattern repeats.
+- Co-locate small component CSS as `*.css` next to TSX; keep global resets in `src/index.css` only.
+
+## Revamp artifacts
+
+- When executing the **site-revamp** skill, create or update `SITE_MAP.md`, `THEME.md`, and `CHECKLIST.md` at the repository root.
+- Client-specific drop files belong in **`revamp-input/`** (gitignored except its README); do not commit secrets or proprietary dumps without explicit team approval.
+
+## Quality
+
+- TypeScript **strict**; fix new `any` usage before merge.
+- Preserve **semantic HTML** and **keyboard** access for interactive widgets.
