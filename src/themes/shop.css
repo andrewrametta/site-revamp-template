@@ -1,0 +1,99 @@
+/**
+ * Shop preset — bright commerce surfaces, emerald CTA.
+ */
+.theme-shop {
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: clamp(1.875rem, 1.35rem + 1.5vw, 2.35rem);
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.65;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 3px rgb(15 23 42 / 0.06);
+  --shadow-md: 0 14px 36px rgb(15 23 42 / 0.1);
+
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-primary: #059669;
+  --color-primary-hover: #047857;
+  --color-link: #047857;
+  --color-link-hover: #065f46;
+  --color-focus: #10b981;
+
+  --color-header-bg: #ffffff;
+  --color-header-bg-scrolled: rgb(255 255 255 / 0.97);
+  --color-header-border: #e2e8f0;
+  --color-header-border-accent: linear-gradient(90deg, transparent, rgb(16 185 129 / 0.45), transparent);
+  --color-header-nav: #64748b;
+  --color-header-nav-hover: #0f172a;
+  --color-header-nav-active: #0f172a;
+  --color-header-link-hover-bg: rgb(16 185 129 / 0.08);
+  --color-header-link-active-bg: rgb(16 185 129 / 0.12);
+  --color-header-link-active-ring: inset 0 0 0 1px rgb(5 150 105 / 0.28);
+  --color-header-cta-shadow: 0 0 0 1px rgb(5 150 105 / 0.22), 0 10px 26px rgb(15 23 42 / 0.1);
+  --color-header-logo-filter: none;
+  --color-header-shadow: 0 8px 24px rgb(15 23 42 / 0.06);
+  --color-header-shadow-raised: 0 14px 34px rgb(15 23 42 / 0.1);
+
+  --color-footer-bg: #f1f5f9;
+  --color-footer-border: #e2e8f0;
+  --color-footer-accent: linear-gradient(90deg, transparent, rgb(16 185 129 / 0.35), transparent);
+
+  --rail-bg: linear-gradient(180deg, rgb(15 23 42 / 0.72) 0%, rgb(15 23 42 / 0.35) 100%);
+  --rail-chip-bg: rgb(255 255 255 / 0.1);
+  --rail-chip-border: rgb(255 255 255 / 0.16);
+  --rail-chip-color: #f1f5f9;
+
+  --color-page-mast-bg: linear-gradient(155deg, #ffffff 0%, #ecfdf5 52%, #f8fafc 100%);
+  --color-page-mast-heading: #0f172a;
+  --color-page-mast-lede: #475569;
+  --color-page-mast-eyebrow: #059669;
+
+  --page-mast-secondary-bg: var(--color-surface);
+  --page-mast-secondary-border: var(--color-border);
+  --page-mast-secondary-color: var(--color-text);
+  --page-mast-secondary-shadow: var(--shadow-sm);
+  --page-mast-secondary-border-hover: var(--color-primary);
+  --page-mast-secondary-bg-hover: rgb(16 185 129 / 0.06);
+  --page-mast-ghost-color: var(--color-text);
+  --page-mast-ghost-border: var(--color-border);
+  --page-mast-ghost-bg: transparent;
+  --page-mast-ghost-bg-hover: rgb(15 23 42 / 0.04);
+  --page-mast-ghost-border-hover: var(--color-primary);
+  --page-mast-title-shadow: none;
+}
+
+.theme-shop .site-header::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--color-header-border-accent);
+  opacity: 0.85;
+}
+
+.theme-shop .ui-section--surface {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}

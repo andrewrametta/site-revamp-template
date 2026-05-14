@@ -1,0 +1,86 @@
+/**
+ * Shared layout tokens (hero scrim, bento radii) for all registered themes.
+ * Home + inner pages use these via `homeShowcase.css` / `sitePages.css`.
+ */
+.theme-default,
+.theme-client-example,
+.theme-showcase,
+.theme-modern,
+.theme-classic,
+.theme-sports,
+.theme-retro,
+.theme-shop,
+.theme-info {
+  --text-hero: clamp(2.5rem, 1.05rem + 5.8vw, 4.85rem);
+  --color-hero-ink: rgb(8 12 7 / 0.94);
+  --color-hero-ink-mid: rgb(8 12 7 / 0.52);
+  --color-hero-ink-top: rgb(8 12 7 / 0.12);
+  --color-hero-title-line: #fdfdf8;
+  --color-hero-lede: rgb(255 255 255 / 0.88);
+  --radius-xl: 22px;
+  --shadow-show: 0 28px 70px rgb(0 0 0 / 0.42);
+  --glow-ring: 0 0 0 1px color-mix(in srgb, var(--color-primary) 38%, transparent);
+}
+
+.theme-default {
+  --color-hero-ink: rgb(15 23 42 / 0.9);
+  --color-hero-ink-mid: rgb(15 23 42 / 0.48);
+  --color-hero-ink-top: rgb(15 23 42 / 0.08);
+}
+
+.theme-client-example {
+  --color-hero-ink: rgb(3 6 18 / 0.92);
+  --color-hero-ink-mid: rgb(3 6 18 / 0.5);
+  --color-hero-ink-top: rgb(3 6 18 / 0.1);
+}
+
+.theme-showcase {
+  --text-hero: clamp(2.85rem, 1.15rem + 7vw, 5.5rem);
+  --color-hero-ink: rgb(10 14 9 / 0.94);
+  --color-hero-ink-mid: rgb(10 14 9 / 0.5);
+  --color-hero-ink-top: rgb(10 14 9 / 0.12);
+  --shadow-show: 0 32px 80px rgb(0 0 0 / 0.55);
+  --glow-ring: 0 0 0 1px color-mix(in srgb, var(--color-primary) 45%, transparent), 0 0 48px rgb(212 162 74 / 0.12);
+}
+
+.theme-modern {
+  --color-hero-ink: rgb(15 23 42 / 0.9);
+  --color-hero-ink-mid: rgb(15 23 42 / 0.46);
+  --color-hero-ink-top: rgb(15 23 42 / 0.06);
+  --glow-ring: 0 0 0 1px color-mix(in srgb, var(--color-primary) 32%, transparent);
+}
+
+.theme-classic {
+  --color-hero-ink: rgb(44 24 16 / 0.9);
+  --color-hero-ink-mid: rgb(44 24 16 / 0.48);
+  --color-hero-ink-top: rgb(44 24 16 / 0.08);
+}
+
+.theme-sports {
+  --text-hero: clamp(2.75rem, 1.1rem + 6.5vw, 5rem);
+  --color-hero-ink: rgb(5 13 24 / 0.93);
+  --color-hero-ink-mid: rgb(5 13 24 / 0.52);
+  --color-hero-ink-top: rgb(5 13 24 / 0.1);
+  --shadow-show: 0 30px 76px rgb(0 0 0 / 0.52);
+  --glow-ring: 0 0 0 1px color-mix(in srgb, var(--color-primary) 40%, transparent), 0 0 40px rgb(190 242 100 / 0.12);
+}
+
+.theme-retro {
+  --color-hero-ink: rgb(19 78 74 / 0.9);
+  --color-hero-ink-mid: rgb(19 78 74 / 0.46);
+  --color-hero-ink-top: rgb(19 78 74 / 0.08);
+}
+
+.theme-shop {
+  --color-hero-ink: rgb(15 23 42 / 0.9);
+  --color-hero-ink-mid: rgb(15 23 42 / 0.45);
+  --color-hero-ink-top: rgb(15 23 42 / 0.06);
+}
+
+.theme-info {
+  --text-hero: clamp(2.35rem, 1.05rem + 5vw, 4.25rem);
+  --color-hero-ink: rgb(15 23 42 / 0.88);
+  --color-hero-ink-mid: rgb(15 23 42 / 0.44);
+  --color-hero-ink-top: rgb(15 23 42 / 0.06);
+  --shadow-show: 0 22px 56px rgb(0 0 0 / 0.35);
+}

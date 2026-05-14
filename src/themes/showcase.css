@@ -1,0 +1,137 @@
+/**
+ * Showcase theme — dark editorial baseline for @site-revamp spin-ups.
+ * Copy to `src/themes/<client>.css`, rename the root class, register in `applyTheme.ts`.
+ */
+.theme-showcase {
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Oswald", system-ui, sans-serif;
+
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: clamp(1.875rem, 1.4rem + 1.5vw, 2.25rem);
+
+  --leading-tight: 1.2;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.25);
+  --shadow-md: 0 12px 32px rgb(0 0 0 / 0.35);
+
+  --color-bg: #141a12;
+  --color-surface: #1c2419;
+  --color-text: #f2f5ef;
+  --color-text-muted: #b4c0a8;
+  --color-border: #2f3d2a;
+  --color-primary: #d4a24a;
+  --color-primary-hover: #e4b85c;
+  --color-link: #e8c678;
+  --color-link-hover: #f0d49a;
+  --color-focus: #f0d49a;
+
+  --color-header-bg: #030303;
+  --color-header-bg-scrolled: rgb(0 0 0 / 0.94);
+  --color-header-border: rgb(255 255 255 / 0.08);
+  --color-header-border-accent: linear-gradient(90deg, transparent, rgb(212 162 74 / 0.65) 50%, transparent);
+  --color-header-nav: #a8a8a8;
+  --color-header-nav-hover: #fafafa;
+  --color-header-nav-active: #fff;
+  --color-header-link-hover-bg: rgb(255 255 255 / 0.07);
+  --color-header-link-active-bg: rgb(212 162 74 / 0.12);
+  --color-header-link-active-ring: inset 0 0 0 1px color-mix(in srgb, var(--color-primary) 48%, transparent);
+  --color-header-cta-shadow: 0 0 0 1px rgb(212 162 74 / 0.4), 0 14px 40px rgb(0 0 0 / 0.5);
+  --color-header-logo-filter: drop-shadow(0 0 18px rgb(212 162 74 / 0.35)) drop-shadow(0 2px 8px rgb(0 0 0 / 0.8));
+  --color-header-shadow: 0 18px 50px rgb(0 0 0 / 0.55);
+  --color-header-shadow-raised: 0 24px 60px rgb(0 0 0 / 0.65);
+
+  --color-footer-bg: #050806;
+  --color-footer-border: rgb(255 255 255 / 0.07);
+  --color-footer-accent: linear-gradient(90deg, transparent, rgb(212 162 74 / 0.45), transparent);
+
+  --rail-bg: linear-gradient(180deg, rgb(0 0 0 / 0.78) 0%, rgb(0 0 0 / 0.42) 100%);
+  --rail-chip-bg: rgb(255 255 255 / 0.05);
+  --rail-chip-border: rgb(255 255 255 / 0.1);
+  --rail-chip-color: #d4d4d4;
+
+  --color-body-ambient: radial-gradient(ellipse 90% 55% at 50% -8%, rgb(212 162 74 / 0.09), transparent 52%);
+
+  --color-page-mast-bg: radial-gradient(ellipse 70% 80% at 100% 0%, rgb(212 162 74 / 0.1), transparent 52%),
+    linear-gradient(168deg, #020403 0%, var(--color-bg) 48%, #0f140d 100%);
+  --color-page-mast-heading: #fdfdf8;
+  --color-page-mast-lede: color-mix(in srgb, var(--color-text) 90%, transparent);
+  --color-page-mast-eyebrow: color-mix(in srgb, var(--color-primary) 82%, #fff);
+}
+
+.theme-showcase .ui-button--ghost:hover:not(:disabled) {
+  background: rgb(255 255 255 / 0.06);
+}
+
+.theme-showcase .ui-button--secondary:hover:not(:disabled) {
+  border-color: var(--color-primary);
+}
+
+.theme-showcase .ui-button--primary {
+  background-image: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-primary-hover) 35%, var(--color-primary)),
+    color-mix(in srgb, var(--color-primary) 88%, #1a1206)
+  );
+  box-shadow: var(--color-header-cta-shadow);
+}
+
+.theme-showcase .ui-button--primary:hover:not(:disabled) {
+  background-image: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-primary-hover) 55%, var(--color-primary)),
+    var(--color-primary-hover)
+  );
+  box-shadow:
+    var(--color-header-cta-shadow),
+    inset 0 1px 0 rgb(255 255 255 / 0.22);
+}
+
+.theme-showcase .ui-button--primary:active:not(:disabled) {
+  box-shadow: 0 0 0 1px rgb(212 162 74 / 0.35), inset 0 2px 6px rgb(0 0 0 / 0.35);
+}
+
+.theme-showcase .ui-section {
+  padding-block: clamp(3.25rem, 7vw, 5rem);
+}
+
+.theme-showcase body {
+  background-image: var(--color-body-ambient);
+  background-repeat: no-repeat;
+  background-size: 100% 420px;
+}
+
+.theme-showcase .site-header::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--color-header-border-accent);
+  opacity: 0.88;
+}
+
+.theme-showcase .ui-section--surface {
+  background: linear-gradient(
+    185deg,
+    color-mix(in srgb, var(--color-surface) 100%, #050505) 0%,
+    var(--color-surface) 42%,
+    color-mix(in srgb, var(--color-surface) 92%, var(--color-bg)) 100%
+  );
+}

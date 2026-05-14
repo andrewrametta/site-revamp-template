@@ -8,17 +8,21 @@ alwaysApply: true
 ## Architecture
 
 - **Stack**: Vite, React, TypeScript, `react-router-dom`. Keep `src/` feature-oriented (`pages/`, `components/`, `lib/`, `themes/`).
-- **Entry**: `applyThemeFromEnv()` in `src/main.tsx` must run before render so `document.documentElement` receives `theme-*` classes early.
+- **Entry**: `applyThemeFromEnv()` and **`applyLayoutPresetFromEnv()`** in `src/main.tsx` must run before render so `document.documentElement` receives `theme-*` classes and **`data-layout`** early.
 
 ## Styling and UI
 
-- Use **CSS custom properties** from the active `.theme-*` class for colors, spacing, and typography. Define per-client overrides in `src/themes/<client>.css`.
+- Use **CSS custom properties** from the active `.theme-*` class for colors, spacing, and typography. Prefer a **personality preset** from `src/lib/themePresets.ts` (`modern`, `classic`, `sports`, …); fork `src/themes/<client>.css` when the brand needs a unique palette.
 - Prefer **`src/components/ui`** primitives (`Button`, `Container`, `Section`) and extend that folder when a pattern repeats.
+- Inner pages: prefer **`PageMast`** plus patterns in `src/pages/sitePages.css`; home uses `src/pages/homeShowcase.css` and **`src/pages/layoutPresets.css`** (both imported globally from `src/App.tsx`).
+- **Theme personality:** pick `VITE_SITE_THEME` from **`src/lib/themePresets.ts`**; fork CSS only when no preset fits.
+- **Structural home layout:** pick **`VITE_LAYOUT_PRESET`** from **`src/lib/layoutPresets.ts`** so home section order and visual weighting match the content strategy; extend `HOME_SECTION_ORDER` / `layoutPresets.css` only for genuinely new flows.
 - Co-locate small component CSS as `*.css` next to TSX; keep global resets in `src/index.css` only.
 
 ## Revamp artifacts
 
 - When executing the **site-revamp** skill, create or update `SITE_MAP.md`, `THEME.md`, and `CHECKLIST.md` at the repository root.
+- **Store-native mobile apps** are out of scope for this Vite app; use the **`@native-app-revamp`** skill in the mobile project workspace (`.cursor/skills/native-app-revamp/`).
 - Client-specific drop files belong in **`revamp-input/`** (gitignored except its README); do not commit secrets or proprietary dumps without explicit team approval.
 
 ## Quality

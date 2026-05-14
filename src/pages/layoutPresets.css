@@ -1,0 +1,706 @@
+/**
+ * Structural layout presets — paired with `html[data-layout="<id>"]` from `applyLayoutPresetFromEnv()`.
+ * Complements `homeShowcase.css`; keep overrides token-aware where possible.
+ */
+
+/* ─── Image-forward: taller hero, heavier imagery, rail as gallery strip ─── */
+html[data-layout="image-forward"] .hero-cinema {
+  min-height: min(100dvh, 58rem);
+}
+
+html[data-layout="image-forward"] .hero-cinema__photo {
+  object-position: center 24%;
+  transform: scale(1.08);
+}
+
+html[data-layout="image-forward"] .hero-cinema__title {
+  max-width: 18ch;
+}
+
+html[data-layout="image-forward"] .show-split__visual {
+  aspect-ratio: 16 / 10;
+}
+
+html[data-layout="image-forward"] .show-bento {
+  gap: var(--space-6);
+}
+
+@media (min-width: 1040px) {
+  html[data-layout="image-forward"] .show-bento {
+    min-height: 520px;
+  }
+}
+
+html[data-layout="image-forward"] .show-tile {
+  min-height: 240px;
+}
+
+html[data-layout="image-forward"] .show-visit__bg {
+  opacity: 0.32;
+}
+
+/* ─── Text-forward: reading scale, darker scrim for type clarity ─── */
+html[data-layout="text-forward"] .hero-cinema {
+  min-height: min(88dvh, 48rem);
+}
+
+html[data-layout="text-forward"] .hero-cinema__scrim {
+  background:
+    linear-gradient(to top, rgb(0 0 0 / 0.82) 0%, rgb(0 0 0 / 0.55) 42%, rgb(0 0 0 / 0.14) 100%),
+    linear-gradient(118deg, color-mix(in srgb, var(--color-primary) 26%, transparent) 0%, transparent 58%);
+}
+
+html[data-layout="text-forward"] .hero-cinema__title {
+  max-width: 26ch;
+  font-size: clamp(2.25rem, 1.1rem + 4.5vw, 4.25rem);
+}
+
+html[data-layout="text-forward"] .hero-cinema__lede {
+  max-width: 46rem;
+  font-size: var(--text-2xl);
+}
+
+html[data-layout="text-forward"] .show-bento-intro {
+  max-width: 52rem;
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+}
+
+html[data-layout="text-forward"] .show-split .page-prose {
+  max-width: 48rem;
+}
+
+html[data-layout="text-forward"] .show-quote__text {
+  font-size: clamp(1.45rem, 1.05rem + 1.4vw, 2rem);
+}
+
+html[data-layout="text-forward"] .show-rail {
+  border-top-color: rgb(255 255 255 / 0.12);
+}
+
+/* ─── Design-forward: amplified surfaces, depth, asymmetric split ─── */
+html[data-layout="design-forward"] .hero-cinema__vignette {
+  box-shadow: inset 0 0 160px rgb(0 0 0 / 0.55);
+}
+
+html[data-layout="design-forward"] .show-bento {
+  gap: var(--space-6);
+}
+
+@media (min-width: 1040px) {
+  html[data-layout="design-forward"] .show-bento {
+    min-height: 520px;
+    filter: drop-shadow(0 24px 48px rgb(0 0 0 / 0.2));
+  }
+}
+
+html[data-layout="design-forward"] .show-tile {
+  min-height: 228px;
+  border-radius: calc(var(--radius-xl) + 6px);
+}
+
+html[data-layout="design-forward"] .show-tile:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+html[data-layout="design-forward"] .show-quote {
+  padding: clamp(var(--space-8), 5vw, var(--space-12));
+  border-width: 2px;
+  box-shadow:
+    var(--shadow-show),
+    inset 0 1px 0 rgb(255 255 255 / 0.06);
+}
+
+html[data-layout="design-forward"] .show-split__visual {
+  border-radius: calc(var(--radius-xl) + 8px);
+  box-shadow:
+    var(--shadow-show),
+    var(--glow-ring),
+    0 24px 60px rgb(0 0 0 / 0.35),
+    inset 0 0 0 1px rgb(255 255 255 / 0.06);
+}
+
+/* ─── Story: lead quote feels like magazine opener when placed early ─── */
+html[data-layout="story"] .show-quote {
+  padding: clamp(var(--space-8), 6vw, 4.5rem);
+}
+
+html[data-layout="story"] .show-quote__text {
+  font-size: clamp(1.5rem, 1.05rem + 1.6vw, 2.1rem);
+  letter-spacing: 0.01em;
+}
+
+html[data-layout="story"] .hero-cinema__lede {
+  max-width: 42rem;
+}
+
+/* ─── Commerce: punchy tiles, visit band slightly hotter ─── */
+html[data-layout="commerce"] .show-tile__label {
+  font-size: clamp(1.35rem, 1rem + 1vw, 1.75rem);
+}
+
+html[data-layout="commerce"] .show-tile:hover {
+  transform: translateY(-5px);
+}
+
+html[data-layout="commerce"] .show-visit__wash {
+  background: radial-gradient(120% 90% at 20% 0%, color-mix(in srgb, var(--color-primary) 32%, transparent), transparent 52%),
+    linear-gradient(to bottom, var(--color-surface), color-mix(in srgb, var(--color-surface) 82%, var(--color-bg)));
+}
+
+html[data-layout="commerce"] .hero-cinema__actions {
+  margin-top: var(--space-10);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-layout="design-forward"] .show-tile:hover {
+    transform: none;
+  }
+}
+
+/* ═══ Shared: KPI / stats band (data-forward, launch) ═══ */
+.stats-strip__intro {
+  max-width: 46rem;
+  margin-bottom: var(--space-8);
+}
+
+.stats-strip__grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 720px) {
+  .stats-strip__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1040px) {
+  .stats-strip__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.stats-strip__card {
+  position: relative;
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--color-border) 90%, var(--color-primary));
+  background: linear-gradient(
+    155deg,
+    color-mix(in srgb, var(--color-surface) 92%, var(--color-bg)),
+    color-mix(in srgb, var(--color-surface) 100%, transparent)
+  );
+  box-shadow: var(--shadow-sm);
+}
+
+.stats-strip__value {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 1.2rem + 2.4vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--color-text);
+}
+
+.stats-strip__label {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.stats-strip__hint {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-muted);
+}
+
+/* Launch: proof band leads — show logo strip */
+.home-proof__logos {
+  display: none;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+html[data-layout="launch"] .home-proof__logos,
+html[data-layout="trust"] .home-proof__logos {
+  display: flex;
+}
+
+.home-proof__logo-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-5);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 88%, var(--color-bg));
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+html[data-layout="launch"] .home-proof .page-section-title {
+  margin-top: 0;
+}
+
+html[data-layout="trust"] .home-proof .page-section-title {
+  margin-top: 0;
+}
+
+/* ─── Minimal: hero breathes, no topic rail chrome ─── */
+html[data-layout="minimal"] .show-rail {
+  display: none;
+}
+
+html[data-layout="minimal"] .hero-cinema {
+  min-height: min(88dvh, 46rem);
+}
+
+html[data-layout="minimal"] .hero-cinema__content {
+  padding-bottom: var(--space-12);
+}
+
+/* ─── Local: calmer map wash, readable NAP band ─── */
+html[data-layout="local"] .show-visit__bg {
+  opacity: 0.26;
+}
+
+html[data-layout="local"] .show-visit__inner .page-eyebrow {
+  letter-spacing: 0.2em;
+}
+
+html[data-layout="local"] .show-visit__inner .page-section-title {
+  font-size: clamp(1.35rem, 1rem + 1.5vw, 2rem);
+}
+
+/* ─── Nonprofit: softer stat cards, mission-forward hero lede ─── */
+html[data-layout="nonprofit"] .stats-strip__card {
+  border-color: color-mix(in srgb, var(--color-primary) 24%, var(--color-border));
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--color-surface) 94%, var(--color-primary)),
+    var(--color-surface)
+  );
+}
+
+html[data-layout="nonprofit"] .hero-cinema__lede {
+  max-width: 42rem;
+}
+
+/* ─── Lead-gen: compact proof, shorter hero, CTA-forward ─── */
+html[data-layout="lead-gen"] .hero-cinema {
+  min-height: min(82dvh, 42rem);
+}
+
+html[data-layout="lead-gen"] .hero-cinema__lede {
+  max-width: 34rem;
+}
+
+html[data-layout="lead-gen"] .home-proof .page-section-title {
+  font-size: clamp(1.2rem, 1rem + 0.8vw, 1.5rem);
+}
+
+html[data-layout="lead-gen"] .home-proof .page-prose {
+  max-width: 40rem;
+}
+
+/* ─── Trust: denser credibility stack, subdued tile motion until later ─── */
+html[data-layout="trust"] .stats-strip__grid {
+  gap: var(--space-3);
+}
+
+html[data-layout="trust"] .stats-strip__card {
+  padding: var(--space-5);
+}
+
+html[data-layout="trust"] .show-tile:hover {
+  transform: translateY(-2px);
+}
+
+html[data-layout="trust"] .hero-cinema__title {
+  max-width: 24ch;
+}
+
+/* ─── Event-forward: venue band reads like a marquee ─── */
+html[data-layout="event-forward"] .show-visit {
+  border-block-width: 2px;
+}
+
+html[data-layout="event-forward"] .show-visit__inner .page-eyebrow {
+  letter-spacing: 0.35em;
+}
+
+html[data-layout="event-forward"] .show-visit__inner .page-section-title {
+  font-size: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+}
+
+html[data-layout="event-forward"] .show-visit__bg {
+  opacity: 0.38;
+}
+
+html[data-layout="event-forward"] .hero-cinema__actions {
+  margin-top: var(--space-10);
+}
+
+/* ─── Data-forward: oversized metrics, analytical hero ─── */
+html[data-layout="data-forward"] .stats-strip__value {
+  font-size: clamp(2.1rem, 1.35rem + 3vw, 3.25rem);
+}
+
+html[data-layout="data-forward"] .stats-strip__card {
+  border-radius: var(--radius-md);
+  border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-border));
+}
+
+html[data-layout="data-forward"] .hero-cinema__lede {
+  max-width: 44rem;
+}
+
+/* ─── Launch: proof + stats stack as “above the fold” credibility ─── */
+html[data-layout="launch"] .stats-strip__card {
+  text-align: center;
+}
+
+html[data-layout="launch"] .stats-strip__hint {
+  max-width: 22ch;
+  margin-inline: auto;
+}
+
+html[data-layout="launch"] .hero-cinema__title {
+  max-width: 20ch;
+}
+
+/* ─── Academy: calmer bento motion, syllabus-forward copy width ─── */
+html[data-layout="academy"] .show-bento-intro {
+  max-width: 48rem;
+}
+
+html[data-layout="academy"] .show-tile:hover {
+  transform: translateY(-3px);
+}
+
+html[data-layout="academy"] .show-split .page-prose {
+  max-width: 44rem;
+}
+
+/* ─── Community: warm quote, tiles feel like “join paths” ─── */
+html[data-layout="community"] .show-quote {
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
+}
+
+html[data-layout="community"] .show-tile__meta {
+  max-width: 32ch;
+}
+
+html[data-layout="community"] .hero-cinema__lede {
+  max-width: 40rem;
+}
+
+/* ═══ Extended placeholder bands (pricing, newsroom, docs, changelog, app shell) ═══ */
+
+.home-pricing__intro,
+.home-newsroom__intro {
+  max-width: 48rem;
+  margin-bottom: var(--space-8);
+}
+
+.home-pricing__grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 900px) {
+  .home-pricing__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+}
+
+.home-pricing__tier {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 96%, var(--color-bg));
+  box-shadow: var(--shadow-sm);
+}
+
+.home-pricing__tier--highlight {
+  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-border));
+  box-shadow: var(--shadow-md), 0 0 0 1px color-mix(in srgb, var(--color-primary) 22%, transparent);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--color-surface) 88%, var(--color-primary)),
+    var(--color-surface)
+  );
+}
+
+.home-pricing__tier-name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.home-pricing__tier-price {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.home-pricing__amount {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 1.2rem + 2.5vw, 2.75rem);
+  font-weight: 700;
+}
+
+.home-pricing__cadence {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.home-pricing__tier-blurb {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  flex: 1;
+}
+
+.home-pricing__features {
+  margin: 0;
+  padding-left: 1.1em;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--leading-relaxed);
+}
+
+.home-newsroom__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.home-newsroom__item {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: var(--space-4);
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--color-border);
+  align-items: baseline;
+}
+
+@media (max-width: 599px) {
+  .home-newsroom__item {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+}
+
+.home-newsroom__date {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+.home-newsroom__link {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration-thickness: 1px;
+}
+
+.home-newsroom__link:hover {
+  color: var(--color-link-hover);
+}
+
+.home-docs-hub__search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-10);
+  max-width: 40rem;
+}
+
+.home-docs-hub__input {
+  flex: 1 1 12rem;
+  min-height: 2.75rem;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--text-base);
+}
+
+.home-docs-hub__topics-title {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.home-docs-hub__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home-docs-hub__topic-link {
+  display: inline-flex;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: none;
+  background: color-mix(in srgb, var(--color-surface) 90%, var(--color-bg));
+}
+
+.home-docs-hub__topic-link:hover {
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
+  color: var(--color-link-hover);
+}
+
+.home-changelog__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 3px solid color-mix(in srgb, var(--color-primary) 65%, transparent);
+}
+
+.home-changelog__entry {
+  padding: var(--space-6) 0 var(--space-6) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.home-changelog__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: baseline;
+  margin-bottom: var(--space-2);
+}
+
+.home-changelog__version {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-primary);
+}
+
+.home-changelog__time {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.home-changelog__body {
+  margin: 0;
+  max-width: 52rem;
+  line-height: var(--leading-relaxed);
+  color: var(--color-text);
+}
+
+.home-app-shell__chrome {
+  border-bottom: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 94%, var(--color-bg));
+}
+
+.home-app-shell__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+}
+
+.home-app-shell__product {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.home-app-shell__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.home-app-shell__nav-link {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.home-app-shell__nav-link:hover {
+  background: color-mix(in srgb, var(--color-text) 6%, transparent);
+  color: var(--color-text);
+}
+
+.home-app-shell__note {
+  padding-block: 0 var(--space-6);
+}
+
+.home-app-shell__lede {
+  max-width: 48rem;
+  margin-bottom: 0;
+}
+
+html[data-layout="pricing"] .home-pricing__tier--highlight {
+  transform: translateY(-2px);
+}
+
+html[data-layout="newsroom"] .home-newsroom__link {
+  font-size: var(--text-xl);
+}
+
+html[data-layout="docs"] .home-docs-hub__input {
+  border-color: color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
+}
+
+html[data-layout="changelog"] .home-changelog__list {
+  border-left-width: 4px;
+}
+
+html[data-layout="app-shell"] .home-app-shell__chrome {
+  box-shadow: var(--shadow-md);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-layout="pricing"] .home-pricing__tier--highlight {
+    transform: none;
+  }
+}
