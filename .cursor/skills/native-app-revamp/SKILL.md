@@ -30,6 +30,8 @@ At the **mobile repo root** (unless the team standard says otherwise):
 
 Optional: `STORE.md` (listing copy, screenshots plan, privacy URL) if scope includes store submission.
 
+**Paste starter:** copy `APP_FLOW.example.md` from this folder to the mobile repo root as `APP_FLOW.md`, then fill it in (or let the agent expand it during the revamp).
+
 ## Workflow
 
 1. **Ingest**: URLs to existing apps (store links), design files, API docs, `revamp-input/` drops (same pattern as web—no secrets in git). Confirm **iOS / Android / both**, min OS, offline needs, auth, push, IAP.
@@ -51,4 +53,4 @@ Optional: `STORE.md` (listing copy, screenshots plan, privacy URL) if scope incl
 
 ## Reference
 
-See `reference.md` in this folder for Expo/EAS, store assets, and common permission pitfalls.
+See `reference.md` in this folder for Expo/EAS, store assets, and common permission pitfalls. Use **`APP_FLOW.example.md`** as the starter body for root-level `APP_FLOW.md`.

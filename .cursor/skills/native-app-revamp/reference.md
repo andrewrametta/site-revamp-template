@@ -8,6 +8,7 @@
 
 ## Navigation
 
+- Bootstrap **`APP_FLOW.md`** at the mobile repo root from **`APP_FLOW.example.md`** in this skill folder (tables for navigators, screens, deep links).
 - **Expo Router**: file-based routes; document dynamic segments and layouts in `APP_FLOW.md`.
 - **React Navigation**: explicit navigators; document param lists in TypeScript.
 
@@ -31,3 +32,4 @@
 1. **Web** workspace → `@site-revamp` → `SITE_MAP.md`, `THEME.md`, `CHECKLIST.md`.
 2. **Mobile** workspace → `@native-app-revamp` → `APP_FLOW.md`, `THEME.md`, `CHECKLIST.md`.
 3. Keep **brand tokens** aligned across both (copy hex/radius decisions into each repo’s theme layer).
+4. **Web `THEME.md`** in this template includes **Related skills (web + native)** with the same guidance.

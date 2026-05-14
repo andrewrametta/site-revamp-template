@@ -6,6 +6,12 @@ This file documents **one** active theme for the project. **Before implementatio
 
 **Structural layout (home page):** independently set **`VITE_LAYOUT_PRESET`** using ids from **`src/lib/layoutPresets.ts`** (`balanced`, `image-forward`, `text-forward`, `design-forward`, `story`, `commerce`, `event-forward`, `data-forward`, `academy`, `community`, `launch`, `minimal`, `local`, `nonprofit`, `lead-gen`, `trust`, `pricing`, `newsroom`, `docs`, `changelog`, `app-shell`) or `revamp-input/layout-preset.txt`. This controls section **order** on the home page (including optional **`stats`**, **`pricing`**, **`newsroom`**, **`docsHub`**, **`changelog`**, **`appShell`** bands) and CSS “wow” weighting in `src/pages/layoutPresets.css` without forking the whole template.
 
+## Related skills (web + native)
+
+- **This repository** is the **marketing web** deliverable. Theme decisions here belong in this `THEME.md` and in `src/themes/*.css` / `VITE_SITE_THEME`.
+- If the same client needs a **native iOS/Android app** (store binaries, not responsive web), use **`@native-app-revamp`** in the **mobile app** Cursor workspace. Keep **palette, type scale, radii, and motion intent** aligned with the mobile repo’s `THEME.md` so brand handoff stays consistent.
+- Companion reference: `.cursor/skills/native-app-revamp/SKILL.md` and `APP_FLOW.example.md` in that folder (navigation doc for the app).
+
 ## Theme id
 
 - **File:** `src/themes/showcase.css` (+ shared layout tokens in `src/themes/showcase-tokens.css`)
