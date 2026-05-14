@@ -1,4 +1,4 @@
-Place **per-project** materials here while running the site-revamp skill (or the same layout in a **mobile app repo** when using **`@native-app-revamp`**). Paths are relative to the repo root.
+Place **per-project** materials here while running the site-revamp skill (or the same layout in a **mobile app repo** when using **`@native-app-revamp`**). Paths are relative to the repo root. **Client web work** should live in a **dedicated repository** created from the template (see root `README.md` § Using Cursor skills); do not mix multiple clients into one checkout.
 
 | File / folder | Purpose |
 |---------------|---------|

@@ -16,6 +16,12 @@ Use the brief and `THEME.md` / `CHECKLIST.md` to make the site feel **commission
 - [ ] **Handoff** — Who edits copy, who swaps images, who owns DNS/forms; short update path in `README.md` or separate handoff note.
 - [ ] **Deliverable surface** — Confirm **web SPA (this repo)** vs **PWA scope** vs **native app (separate repo/tooling)** in the brief; do not treat store apps as a layout preset here. For store-native work, use **`@native-app-revamp`** in the mobile workspace (see `.cursor/skills/native-app-revamp/`).
 
+## New repository bootstrap
+
+- **One client → one GitHub repo** created from the template (**Use this template**), then clone and open **that** folder in Cursor. See the main skill doc **New repository (client spin-up)** for GitHub vs CLI flows.
+- After clone: `npm install`, `cp .env.example .env`, edit **`package.json`** `name`, first commit, `git push -u origin main` when the remote exists.
+- Confirm **`.cursor/skills/`** and **`.cursor/rules/`** exist in the clone (they should if committed on the template default branch); copy from the template if anything is missing.
+
 ## Ingestion
 
 ### URL-first capture (recommended when starting from legacy URLs)

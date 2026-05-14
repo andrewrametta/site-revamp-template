@@ -2,12 +2,14 @@
 name: site-revamp
 disable-model-invocation: false
 description: >-
-  Revamps a legacy marketing or content site into this repository’s React +
-  Vite **web** template: ingests live URLs and brand assets, maps information
+  Revamps a legacy marketing or content site into a **dedicated** React + Vite **web**
+  repo created from this template: ingests live URLs and brand assets, maps information
   architecture to routes, applies theme tokens and shared UI primitives, and
   produces SITE_MAP.md, THEME.md, and CHECKLIST.md. Use when the user mentions
   site revamp, redesign from a URL, migrating a website into this template,
-  themed spin-ups, or drops materials under revamp-input/. **Native mobile app
+  themed spin-ups, or drops materials under revamp-input/. **Start client work in a
+  new repository** spun up from the template (see skill “New repository” section)—
+  not the upstream template unless explicitly maintaining the template. **Native mobile app
   builds** use **`@native-app-revamp`** in the mobile repo—not a preset in this repo.
 ---
 
@@ -15,14 +17,44 @@ description: >-
 
 ## Preconditions
 
-- Workspace is this **site-revamp-template** (or a fork) unless the user explicitly names another root.
+- **Client or per-site delivery:** The Cursor workspace should be a **dedicated repository** created from this template (see **New repository (client spin-up)** below)—one repo per client or per site—not the shared **upstream** `site-revamp-template` used only as the source of truth for the team.
+- **Template maintenance:** If the user explicitly says they are **improving the template itself** for everyone, the workspace may be the canonical template repo; skip new-repo spin-up and do not mix unrelated client assets into it.
 - Prefer materials under `revamp-input/` (see `revamp-input/README.md`). If the user only pastes a URL or assets in chat, copy them into that structure (or list assumptions in `ASSUMPTIONS.md` at repo root).
+
+## New repository (client spin-up)
+
+Use this **before ingest** for every **client site** or **new branded property**, so `revamp-input/`, `SITE_MAP.md`, and theme choices stay **isolated per repo**. Do not layer multiple unrelated clients into the upstream template checkout.
+
+### GitHub (recommended)
+
+1. On GitHub: open the template → **Use this template** → **Create a new repository** (pick owner, name, visibility).
+2. **Clone** the new repo locally, e.g. `git clone git@github.com:ORG/new-client-site.git` and `cd new-client-site`.
+3. Run **`npm install`**, **`cp .env.example .env`**, and set **`package.json`** `name` to the project slug.
+4. In Cursor: **File → Open Folder** and select the **clone** (workspace root = client repo, not the template monolith).
+
+### CLI (sibling clone from a local template checkout)
+
+```bash
+cd ~/projects
+git clone <path-or-url-to-template> new-client-site
+cd new-client-site
+git remote remove origin
+git remote add origin git@github.com:ORG/new-client-site.git
+npm install && cp .env.example .env
+```
+
+Then open **`new-client-site`** in Cursor and create the empty GitHub repo if needed (`git push -u origin main`).
+
+### Agent behavior
+
+- If the user requests a **client revamp** but the open workspace is clearly the **canonical template** (and they did **not** say *template maintenance*), **stop before changing routes or `revamp-input/`** and give the **New repository** steps—or run the clone / `git remote` commands in the shell when the user approves, then remind them to **Open Folder** on the new path.
+- **Skills and rules:** ensure the new clone includes **`.cursor/skills/`** and **`.cursor/rules/`** from the template (they ship on the default branch when committed). If anything is missing, copy those folders from the template into the new repo.
 
 ## Web vs native mobile deliverable
 
 - This skill targets a **web marketing SPA** in this repository (Vite + React + `react-router-dom`).
 - **App Store / Play Store native apps** (Expo, React Native, Flutter, Swift, Kotlin, etc.) need a **different project**: build/signing, navigation primitives, and distribution differ from a static or SPA **website**. Do **not** fake that with a “mobile app” theme or layout preset here—this codebase does not produce store binaries. Use **`@native-app-revamp`** with the **mobile repo** as the workspace root (see `.cursor/skills/native-app-revamp/`).
-- **Operational model:** keep **one agent at a time** (no orchestrator required). For web + app, use **this workspace for the site** and a **separate mobile starter repo** for the app; the same agent can switch **serially** between roots when one milestone is done.
+- **Operational model:** keep **one agent at a time** (no orchestrator required). For web + app, use **a dedicated web clone** for the site and a **separate mobile starter repo** for the app; the same agent can switch **serially** between roots when one milestone is done.
 - If the client needs **mobile-friendly web** or a **PWA** (responsive, installable shell, light offline), stay in this template and document scope in `brief.md` / `CHECKLIST.md`.
 
 ## Non‑negotiables
@@ -98,12 +130,13 @@ On the **first implementation pass** for a new site (or right after “Use this 
 
 ## Workflow
 
-1. **Ingest** — Open `revamp-input/brief.md` and URLs (`urls.txt` / `urls.json` or URLs in chat); read **`revamp-input/theme-preset.txt`** and **`revamp-input/layout-preset.txt`** when present. When URLs drive the revamp, follow the **URL-first capture** playbook in **`reference.md`** and populate **`revamp-input/url-capture.md`** from **`URL_CAPTURE.example.md`** (structure: site-wide checklist + per-URL table) so **nav, footer, sections, CTAs, forms, embeds, SEO signals, and parity risks** are explicit before routing work. Extract **audience, voice, imagery rules, motion tolerance, trust/compliance, SEO, and post-launch ownership** (see **Differentiation beyond theme & layout** above). Use browser tools for live pages when available. Record sections, nav, footer, forms, and critical user journeys.
-2. **Spec** — Add or update `SITE_MAP.md` (legacy URL → new route), `THEME.md` (theme + **layout** preset ids), and note gaps in `ASSUMPTIONS.md` if inputs are incomplete.
-3. **Theme + layout presets** — Resolve **theme personality** and **structural layout** from the prompt or brief; set **`VITE_SITE_THEME`** and **`VITE_LAYOUT_PRESET`** in `.env` and `.env.example`. Prefer existing entries in **`themePresets.ts`** / **`layoutPresets.ts`**. Fork CSS or extend order maps only when nothing fits.
-4. **Implement** — Shell (`SiteHeader`, `SiteFooter`, `main` landmark) first, then home, then remaining routes. Replace placeholder copy and imagery via `siteConfig` / `siteMedia`; keep **`PageMast`**, **`sitePages.css`**, and **`homeShowcase.css`** patterns unless the brief opts out. Move static assets to **`public/brand/`** when appropriate.
-5. **Harden** — Semantic headings, labels on controls, focus styles, responsive checks, meaningful `lang` on `<html>` if multi-language. Prefer responsive layouts with theme spacing tokens.
-6. **Handoff** — Ensure `CHECKLIST.md` reflects a11y/perf/SEO smoke results; update root `README.md` “Project” section with site name and deploy notes.
+1. **New repo (client delivery)** — Confirm the workspace is a **dedicated clone** per **New repository (client spin-up)**. If not, bootstrap it first; **do not** run ingest on the upstream template for client work.
+2. **Ingest** — Open `revamp-input/brief.md` and URLs (`urls.txt` / `urls.json` or URLs in chat); read **`revamp-input/theme-preset.txt`** and **`revamp-input/layout-preset.txt`** when present. When URLs drive the revamp, follow the **URL-first capture** playbook in **`reference.md`** and populate **`revamp-input/url-capture.md`** from **`URL_CAPTURE.example.md`** (structure: site-wide checklist + per-URL table) so **nav, footer, sections, CTAs, forms, embeds, SEO signals, and parity risks** are explicit before routing work. Extract **audience, voice, imagery rules, motion tolerance, trust/compliance, SEO, and post-launch ownership** (see **Differentiation beyond theme & layout** above). Use browser tools for live pages when available. Record sections, nav, footer, forms, and critical user journeys.
+3. **Spec** — Add or update `SITE_MAP.md` (legacy URL → new route), `THEME.md` (theme + **layout** preset ids), and note gaps in `ASSUMPTIONS.md` if inputs are incomplete.
+4. **Theme + layout presets** — Resolve **theme personality** and **structural layout** from the prompt or brief; set **`VITE_SITE_THEME`** and **`VITE_LAYOUT_PRESET`** in `.env` and `.env.example`. Prefer existing entries in **`themePresets.ts`** / **`layoutPresets.ts`**. Fork CSS or extend order maps only when nothing fits.
+5. **Implement** — Shell (`SiteHeader`, `SiteFooter`, `main` landmark) first, then home, then remaining routes. Replace placeholder copy and imagery via `siteConfig` / `siteMedia`; keep **`PageMast`**, **`sitePages.css`**, and **`homeShowcase.css`** patterns unless the brief opts out. Move static assets to **`public/brand/`** when appropriate.
+6. **Harden** — Semantic headings, labels on controls, focus styles, responsive checks, meaningful `lang` on `<html>` if multi-language. Prefer responsive layouts with theme spacing tokens.
+7. **Handoff** — Ensure `CHECKLIST.md` reflects a11y/perf/SEO smoke results; update root `README.md` “Project” section with site name and deploy notes.
 
 ## Outputs (create or refresh)
 
@@ -116,5 +149,5 @@ On the **first implementation pass** for a new site (or right after “Use this 
 
 ## Extra detail
 
-- Long checklists and edge cases: [reference.md](reference.md) (includes **URL-first ingest** playbook).
+- Long checklists and edge cases: [reference.md](reference.md) (includes **URL-first ingest** and **New repository bootstrap**).
 - Legacy URL inventory template: [URL_CAPTURE.example.md](URL_CAPTURE.example.md) → copy to `revamp-input/url-capture.md`.

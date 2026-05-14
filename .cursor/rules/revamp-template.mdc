@@ -21,7 +21,7 @@ alwaysApply: true
 
 ## Revamp artifacts
 
-- When executing the **site-revamp** skill, create or update `SITE_MAP.md`, `THEME.md`, and `CHECKLIST.md` at the repository root.
+- When executing the **site-revamp** skill, create or update `SITE_MAP.md`, `THEME.md`, and `CHECKLIST.md` at the repository root. **Client delivery** should use a **dedicated repo** per client spun up from this template (see `.cursor/skills/site-revamp/SKILL.md` — **New repository**); avoid piling unrelated `revamp-input/` drops into the upstream template.
 - **Store-native mobile apps** are out of scope for this Vite app; use the **`@native-app-revamp`** skill in the mobile project workspace (`.cursor/skills/native-app-revamp/`).
 - Client-specific drop files belong in **`revamp-input/`** (gitignored except its README); do not commit secrets or proprietary dumps without explicit team approval.
 

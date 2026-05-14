@@ -4,7 +4,7 @@ Team template for **rebuilding legacy marketing sites** in React (Vite) with **s
 
 | Skill | Use when | Workspace root must be |
 |-------|-----------|-------------------------|
-| **`@site-revamp`** | Migrating or redesigning a **website** into this template | **This repo** (the Vite app) |
+| **`@site-revamp`** | Migrating or redesigning a **client website** from this template | **A new GitHub repo per client** (from **Use this template**), clone opened in Cursor—not the upstream template for delivery |
 | **`@native-app-revamp`** | Building or revamping a **native** iOS/Android app (store binaries) | The **Expo / React Native** (or other native) **app repo** — not this Vite project |
 
 This README is the **web** template. Native work uses the same skill **files** (see below) but a **different** git root in Cursor.
@@ -19,6 +19,8 @@ Example routes: Home, About, Services, Feeder menu (rename or remove per client)
 - **Deploy:** static build via `npm run build` → `dist/`; configure the host for SPA fallback on all app routes.
 
 ## Quick start
+
+After you have opened the project folder in Cursor (usually a **client clone** created from this template—see **Using Cursor skills → A**):
 
 ```bash
 npm install
@@ -35,10 +37,13 @@ Skills are invoked in **Cursor chat** with **`@site-revamp`** or **`@native-app-
 
 ### A. Marketing website only (default)
 
-1. Open **this repository** as the Cursor **workspace root** (File → Open Folder).
-2. Add client materials under `revamp-input/` following `revamp-input/README.md` (`brief.md`, URLs in `urls.txt` or `urls.json`, brand assets, screenshots, optional `theme-preset.txt` / `layout-preset.txt`). For URL-driven revamps, copy **`.cursor/skills/site-revamp/URL_CAPTURE.example.md`** to **`revamp-input/url-capture.md`** and fill it (or let **`@site-revamp`** draft it from live pages).
-3. Start a chat and run **`@site-revamp`**, pasting the brief or pointing at `revamp-input/brief.md`.
-4. Let the agent update routes, `siteConfig`, themes, and root artifacts **`SITE_MAP.md`**, **`THEME.md`**, **`CHECKLIST.md`** (and **`ASSUMPTIONS.md`** if anything was unclear).
+1. **Create a new repository** for the client (or site): on GitHub use **Use this template** on `site-revamp-template` → create **new repo** → **clone** it locally. Do **not** build multiple unrelated client sites inside the upstream template checkout.
+2. **Open the clone** in Cursor (**File → Open Folder**). Run **`npm install`** and **`cp .env.example .env`**; set **`package.json`** `name` to the project slug.
+3. Add client materials under `revamp-input/` following `revamp-input/README.md` (`brief.md`, URLs in `urls.txt` or `urls.json`, brand assets, screenshots, optional `theme-preset.txt` / `layout-preset.txt`). For URL-driven revamps, copy **`.cursor/skills/site-revamp/URL_CAPTURE.example.md`** to **`revamp-input/url-capture.md`** and fill it (or let **`@site-revamp`** draft it from live pages).
+4. Start a chat and run **`@site-revamp`**, pasting the brief or pointing at `revamp-input/brief.md`.
+5. Let the agent update routes, `siteConfig`, themes, and root artifacts **`SITE_MAP.md`**, **`THEME.md`**, **`CHECKLIST.md`** (and **`ASSUMPTIONS.md`** if anything was unclear).
+
+**Exception:** If you are **maintaining the template** for everyone, you may keep this template repo as the workspace and skip step 1—say *template maintenance* in the prompt so **`@site-revamp`** does not insist on a new clone.
 
 ### B. Native app only
 
@@ -54,7 +59,7 @@ Skills are invoked in **Cursor chat** with **`@site-revamp`** or **`@native-app-
 
 Use **two workspace roots** (two Cursor windows or switch folders when a milestone is done):
 
-1. **Web:** this template → **`@site-revamp`** → `SITE_MAP.md`, `THEME.md`, `CHECKLIST.md`.
+1. **Web:** a **dedicated template clone** for the client → **`@site-revamp`** → `SITE_MAP.md`, `THEME.md`, `CHECKLIST.md`.
 2. **Mobile:** app repo → **`@native-app-revamp`** → `APP_FLOW.md`, `THEME.md`, `CHECKLIST.md`.
 
 Keep **visual tokens** (palette, type, radii, motion intent) consistent across both `THEME.md` files. The web `THEME.md` in this repo has a short **“Related skills (web + native)”** section that points here.
@@ -63,7 +68,7 @@ Keep **visual tokens** (palette, type, radii, motion intent) consistent across b
 
 1. Publish this repo to GitHub.
 2. Enable **Template repository** in repo **Settings → General**.
-3. New sites: **Use this template** → clone → update `package.json` name → set remote → first commit → add `revamp-input/` materials → run **`@site-revamp`** with the client brief.
+3. New sites: **Use this template** → create a **new repository** (per client) → clone → update `package.json` name → set remote → first commit → open **that clone** in Cursor → add `revamp-input/` materials → run **`@site-revamp`** with the client brief.
 
 ## Scripts
 
