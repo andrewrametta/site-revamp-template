@@ -98,7 +98,7 @@ On the **first implementation pass** for a new site (or right after “Use this 
 
 ## Workflow
 
-1. **Ingest** — Open `revamp-input/brief.md` and URLs; read **`revamp-input/theme-preset.txt`** and **`revamp-input/layout-preset.txt`** when present. Extract **audience, voice, imagery rules, motion tolerance, trust/compliance, SEO, and post-launch ownership** (see **Differentiation beyond theme & layout** above). Use browser tools for live pages when available. Record sections, nav, footer, forms, and critical user journeys.
+1. **Ingest** — Open `revamp-input/brief.md` and URLs (`urls.txt` / `urls.json` or URLs in chat); read **`revamp-input/theme-preset.txt`** and **`revamp-input/layout-preset.txt`** when present. When URLs drive the revamp, follow the **URL-first capture** playbook in **`reference.md`** and populate **`revamp-input/url-capture.md`** from **`URL_CAPTURE.example.md`** (structure: site-wide checklist + per-URL table) so **nav, footer, sections, CTAs, forms, embeds, SEO signals, and parity risks** are explicit before routing work. Extract **audience, voice, imagery rules, motion tolerance, trust/compliance, SEO, and post-launch ownership** (see **Differentiation beyond theme & layout** above). Use browser tools for live pages when available. Record sections, nav, footer, forms, and critical user journeys.
 2. **Spec** — Add or update `SITE_MAP.md` (legacy URL → new route), `THEME.md` (theme + **layout** preset ids), and note gaps in `ASSUMPTIONS.md` if inputs are incomplete.
 3. **Theme + layout presets** — Resolve **theme personality** and **structural layout** from the prompt or brief; set **`VITE_SITE_THEME`** and **`VITE_LAYOUT_PRESET`** in `.env` and `.env.example`. Prefer existing entries in **`themePresets.ts`** / **`layoutPresets.ts`**. Fork CSS or extend order maps only when nothing fits.
 4. **Implement** — Shell (`SiteHeader`, `SiteFooter`, `main` landmark) first, then home, then remaining routes. Replace placeholder copy and imagery via `siteConfig` / `siteMedia`; keep **`PageMast`**, **`sitePages.css`**, and **`homeShowcase.css`** patterns unless the brief opts out. Move static assets to **`public/brand/`** when appropriate.
@@ -116,4 +116,5 @@ On the **first implementation pass** for a new site (or right after “Use this 
 
 ## Extra detail
 
-- Long checklists and edge cases: [reference.md](reference.md)
+- Long checklists and edge cases: [reference.md](reference.md) (includes **URL-first ingest** playbook).
+- Legacy URL inventory template: [URL_CAPTURE.example.md](URL_CAPTURE.example.md) → copy to `revamp-input/url-capture.md`.

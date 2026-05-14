@@ -36,7 +36,7 @@ Skills are invoked in **Cursor chat** with **`@site-revamp`** or **`@native-app-
 ### A. Marketing website only (default)
 
 1. Open **this repository** as the Cursor **workspace root** (File → Open Folder).
-2. Add client materials under `revamp-input/` following `revamp-input/README.md` (`brief.md`, URLs, brand assets, screenshots, optional `theme-preset.txt` / `layout-preset.txt`).
+2. Add client materials under `revamp-input/` following `revamp-input/README.md` (`brief.md`, URLs in `urls.txt` or `urls.json`, brand assets, screenshots, optional `theme-preset.txt` / `layout-preset.txt`). For URL-driven revamps, copy **`.cursor/skills/site-revamp/URL_CAPTURE.example.md`** to **`revamp-input/url-capture.md`** and fill it (or let **`@site-revamp`** draft it from live pages).
 3. Start a chat and run **`@site-revamp`**, pasting the brief or pointing at `revamp-input/brief.md`.
 4. Let the agent update routes, `siteConfig`, themes, and root artifacts **`SITE_MAP.md`**, **`THEME.md`**, **`CHECKLIST.md`** (and **`ASSUMPTIONS.md`** if anything was unclear).
 

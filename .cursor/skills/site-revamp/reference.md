@@ -18,8 +18,33 @@ Use the brief and `THEME.md` / `CHECKLIST.md` to make the site feel **commission
 
 ## Ingestion
 
-- Capture primary nav, footer links, and CTA destinations.
-- Identify duplicated modules (testimonial rows, pricing cards, feature grids) for extraction into components under `src/components/`.
+### URL-first capture (recommended when starting from legacy URLs)
+
+When **`revamp-input/urls.txt`**, **`urls.json`**, or URLs pasted in chat are the main input:
+
+**Optional `urls.json` shape** (one file, easy for agents to parse):
+
+```json
+{
+  "primary": "https://www.example.com",
+  "staging": "https://staging.example.com",
+  "pages": [
+    "https://www.example.com/about",
+    "https://www.example.com/pricing"
+  ]
+}
+```
+
+1. **Bootstrap inventory** — Copy **`URL_CAPTURE.example.md`** from this skill folder to **`revamp-input/url-capture.md`** and fill it while browsing (or have the agent draft it from live pages). Merge any overlap into **`brief.md`** if the team prefers a single doc.
+2. **Crawl order** — Home → every **primary nav** target → **footer** destinations → high-traffic landings the client names (pricing, contact, careers, docs hub). Note **auth-gated** areas in `ASSUMPTIONS.md` instead of guessing.
+3. **Per page, capture at minimum:** `<title>`, meta description, **H1**, ordered list of **main sections** (hero, logos, feature grid, testimonial, FAQ, …), **primary CTAs** and hrefs, **forms** (fields, action), **embeds** (maps, video, booking widgets), and **images** worth replacing (describe; source files go under `revamp-input/media/` or `public/brand/`).
+4. **Site-wide:** cookie/consent UI, analytics snippets (names only), **hreflang** / alternate locales, **canonical** / `noindex` quirks, **third-party** scripts that affect layout (review widgets, chat).
+5. **Reuse patterns** — Identify repeated modules (testimonial rows, pricing cards, icon feature grids) for shared components under `src/components/` rather than one-off pages.
+6. **Parity** — Anything that must **not** ship without a migration note (PDFs, legal text, booking flows) goes into **`SITE_MAP.md`** or **`CHECKLIST.md`** with an explicit owner.
+
+### General
+
+- Capture primary nav, footer links, and CTA destinations even when the brief is prose-only.
 - For JS-heavy legacy pages, rely on `revamp-input/screenshots/` plus user-provided HTML exports when the DOM is not fully visible to automation.
 
 ## Accessibility (minimum)
